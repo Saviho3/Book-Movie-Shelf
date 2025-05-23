@@ -1,11 +1,16 @@
 import React from 'react'
+import {HashRouter as Router, Routes, Route} from 'react-router-dom'
+import Shelf from "./Pages/Shelf.jsx"
+import Add from "./Pages/AddBook.jsx"
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to My App</h1>
-      {/* You can add routing or more components here */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Shelf/>} />
+        <Route path="/add" element={<Add/>} />
+      </Routes>
+    </Router>
   )
 }
 
