@@ -5,7 +5,7 @@ function Shelf() {
   return (
     <>
       <h1>Welcome to Home</h1>
-      <Link to="/add"><button>Add</button></Link>
+      <Link to="/add-book"><button>Add</button></Link>
     </>
   )
 }
