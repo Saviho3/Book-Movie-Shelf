@@ -6,6 +6,7 @@ function Shelf() {
     <>
       <h1>Welcome to Home</h1>
       <Link to="/add-book"><button>Add</button></Link>
+      <Link to="add-movie"><button>AddMovie</button></Link>
     </>
   )
 }
