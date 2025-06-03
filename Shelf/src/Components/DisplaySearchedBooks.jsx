@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import addItem from '../util/addItem.js'
 
 function DisplaySearchedBooks({ books }) {
 
+
+    const [popupBookID, setpopupBookID] = useState(false)
+    const [rating, setRating] = useState(1)
     const handleAdd = async (book) => {
     const info = book.volumeInfo
 
@@ -13,7 +16,7 @@ function DisplaySearchedBooks({ books }) {
         img: info.imageLinks?.thumbnail || '',
         username: 'guest', // static for now, dynamic later
         description: info.description || '',
-        rating: parseFloat(info.averageRating) || null // optional, if available
+        rating: rating || null
     }
 
     console.log('📦 Sending to Supabase:', item)
@@ -26,6 +29,7 @@ function DisplaySearchedBooks({ books }) {
         console.error('🚨 Insert failed:', item)
         alert(`❌ Failed to add "${item.title}". Check console for details.`)
     }
+    setOpenPopup(false);
     }
 
     return (
@@ -41,11 +45,32 @@ function DisplaySearchedBooks({ books }) {
                             <p>{info.title}</p>
                         )}
                         <button
-                            onClick={() => handleAdd(book)}
+                            //onClick={() => handleAdd(book)}
+                            onClick={() => setpopupBookID(book.id)}
                             className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 mt-2"
                         >
                             Add to Supabase
                         </button>
+
+
+                        {
+                            popupBookID == book.id && 
+                        <div>
+                            <h2>Poop</h2>
+                            <button onClick={() => setpopupBookID(false)}>x</button>
+                            <select name="ratingOptions" 
+                            id="ratingOptions"
+                            onChange={(e) => setRating(Number(e.target.value))}>
+                                {[...Array(10)].map((_, index) => (
+                                    <option value = {index + 1}>{index + 1}</option>
+                                ))}
+                            </select>
+                            <button onClick={() => handleAdd(book)}>Add Book</button>
+
+                        </div>
+                        }
+
+
                     </div>
                 )
             })}
