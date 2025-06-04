@@ -6,6 +6,7 @@ function DisplaySearchedBooks({ books }) {
 
     const [popupBookID, setpopupBookID] = useState(false)
     const [rating, setRating] = useState(1)
+    const [note, setNote] = useState("")
     const handleAdd = async (book) => {
     const info = book.volumeInfo
 
@@ -16,7 +17,8 @@ function DisplaySearchedBooks({ books }) {
         img: info.imageLinks?.thumbnail || '',
         username: 'guest', // static for now, dynamic later
         description: info.description || '',
-        rating: rating || null
+        rating: rating || null,
+        note: note || null,
     }
 
     console.log('📦 Sending to Supabase:', item)
@@ -58,6 +60,9 @@ function DisplaySearchedBooks({ books }) {
                         <div>
                             <h2>Poop</h2>
                             <button onClick={() => setpopupBookID(false)}>x</button>
+                            <input type="text" name="description" id="description" 
+                            placeholder='How did you feel about this book?'
+                            onChange={(e) => setNote(e.target.value)}/>
                             <select name="ratingOptions" 
                             id="ratingOptions"
                             onChange={(e) => setRating(Number(e.target.value))}>
