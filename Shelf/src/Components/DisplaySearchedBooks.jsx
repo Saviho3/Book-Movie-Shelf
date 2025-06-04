@@ -15,7 +15,7 @@ function DisplaySearchedBooks({ books }) {
         author: info.authors?.[0] || 'Unknown',
         genre: info.categories || [], // Supabase accepts text[]
         img: info.imageLinks?.thumbnail || '',
-        username: 'guest', // static for now, dynamic later
+        username: localStorage.getItem('username'), // static for now, dynamic later
         description: info.description || '',
         rating: rating || null,
         note: note || null,
@@ -31,7 +31,7 @@ function DisplaySearchedBooks({ books }) {
         console.error('🚨 Insert failed:', item)
         alert(`❌ Failed to add "${item.title}". Check console for details.`)
     }
-    setOpenPopup(false);
+    setpopupBookID(false);
     }
 
     return (

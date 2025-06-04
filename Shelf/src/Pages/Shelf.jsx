@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 function Shelf() {
   return (
     <>
-      <h1>Welcome to Home</h1>
-      <Link to="/add-book"><button>Add</button></Link>
-      <Link to="add-movie"><button>AddMovie</button></Link>
+      <h1>Welcome to Shelf</h1>
+      <Link to="/add-book"><button>Add Book</button></Link>
+      <Link to="add-movie"><button>Add Movie</button></Link>
     </>
   )
 }

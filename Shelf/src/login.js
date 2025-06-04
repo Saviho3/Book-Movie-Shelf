@@ -74,6 +74,8 @@ document.getElementById("submit-button").addEventListener("click", async functio
     if (exists) {
       alert("Wrong username or password!");
     } else {
+      localStorage.setItem("username", username);
+      console.log(username);
       window.location.href = "index.html";
     }
 
@@ -94,6 +96,7 @@ document.getElementById("submit-button").addEventListener("click", async functio
     }
 
     await insertUser(username, password);
+    localStorage.setItem("username", username);
     window.location.href = "index.html";
     //document.getElementById("page-title").textContent = "Account created for " + username;
   }
