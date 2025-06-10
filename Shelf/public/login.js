@@ -1,4 +1,4 @@
-import supabase from "./config/supabaseClient.js"
+import supabase from "../src/config/supabaseClient.js"
 
 //From signup.html
 let cancel_button = document.getElementById("cancel")
