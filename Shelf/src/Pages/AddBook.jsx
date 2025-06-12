@@ -9,7 +9,7 @@ function AddBook() {
   async function getBooks(e) {
     e.preventDefault();
     if (!searchTerm.trim()) return;
-    const response = await fetch (`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm.trim())}`);
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm.trim())}&maxResults=9`);
     const result = await response.json();
     setBooks(result.items || []);
   }

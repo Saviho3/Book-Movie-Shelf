@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import addItem from '../util/addItem.js'
+import './DisplaySearchedBooks.css';
 
 function DisplaySearchedBooks({ books }) {
 
@@ -35,21 +36,21 @@ function DisplaySearchedBooks({ books }) {
     }
 
     return (
-        <div className="grid grid-cols-2 gap-4 p-4">
+        <div className="book-grid">
             {books.map(book => {
                 const info = book.volumeInfo;
                 return (
-                    <div key={book.id} className="book border p-4 rounded shadow">
+                    <div key={book.id} className="book-card">
                         <h2 className="font-bold mb-2">{info.title}</h2>
                         {info.imageLinks?.thumbnail ? (
-                            <img src={info.imageLinks.thumbnail} alt={info.title} className="mb-2" />
+                            <img src={info.imageLinks.thumbnail} alt={info.title} className="book-image" />
                         ) : (
                             <p>{info.title}</p>
                         )}
                         <button
                             //onClick={() => handleAdd(book)}
                             onClick={() => setpopupBookID(book.id)}
-                            className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 mt-2"
+                            className="add-button"
                         >
                             Add to Supabase
                         </button>
@@ -57,21 +58,30 @@ function DisplaySearchedBooks({ books }) {
 
                         {
                             popupBookID == book.id && 
-                        <div>
+                        <div className="popup">
                             <h2>Poop</h2>
-                            <button onClick={() => setpopupBookID(false)}>x</button>
-                            <input type="text" name="description" id="description" 
-                            placeholder='How did you feel about this book?'
-                            onChange={(e) => setNote(e.target.value)}/>
-                            <select name="ratingOptions" 
-                            id="ratingOptions"
-                            onChange={(e) => setRating(Number(e.target.value))}>
-                                {[...Array(10)].map((_, index) => (
-                                    <option value = {index + 1}>{index + 1}</option>
-                                ))}
+                            <button className="close-button" onClick={() => setpopupBookID(false)}>x</button>
+                            <input
+                              type="text"
+                              name="description"
+                              id="description"
+                              placeholder="How did you feel about this book?"
+                              onChange={(e) => setNote(e.target.value)}
+                              className="popup-input"
+                            />
+                            <select
+                              name="ratingOptions"
+                              id="ratingOptions"
+                              onChange={(e) => setRating(Number(e.target.value))}
+                              className="popup-select"
+                            >
+                              {[...Array(10)].map((_, index) => (
+                                <option key={index} value={index + 1}>
+                                  {index + 1}
+                                </option>
+                              ))}
                             </select>
-                            <button onClick={() => handleAdd(book)}>Add Book</button>
-
+                            <button className="popup-add-button" onClick={() => handleAdd(book)}>Add Book</button>
                         </div>
                         }
 
