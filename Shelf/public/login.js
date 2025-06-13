@@ -45,7 +45,7 @@ async function doesUserExist(username, pass) {
    } else {
     query = supabase
     .from('users')
-    .select('username')
+    .select('*')
     .eq('username', username)
     .eq('password', pass)
     .maybeSingle()
@@ -71,7 +71,7 @@ document.getElementById("submit-button").addEventListener("click", async functio
     let username = document.getElementById("username-input").value;
     let password = document.getElementById("password-input").value;
     const exists = await doesUserExist(username, password);
-    if (exists) {
+    if (!exists) {
       alert("Wrong username or password!");
     } else {
       localStorage.setItem("username", username);
@@ -90,7 +90,7 @@ document.getElementById("submit-button").addEventListener("click", async functio
     }
     const exists = await doesUserExist(username, "sign up");
 
-    if (exists) {
+    if (!exists) {
       alert("Username already taken.");
       return;
     }

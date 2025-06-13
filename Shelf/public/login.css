@@ -1,0 +1,62 @@
+
+h1 {
+    text-align: center;
+    font-family: 'Lucida Console';
+}
+.login-box {
+    width: 50vh;
+    height:40vh;
+    margin: 0 auto;
+    
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    
+    
+}
+
+.info-inputs {
+    width:80%;
+    height:30px;
+    padding-left: 10px;
+    font-family: 'Lucida Console';
+    
+
+}
+
+#username-input {
+    
+}
+
+
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    /*border:2px solid black;*/
+
+}
+
+#submit-button {
+    width:95%;
+    height: 30px;
+    text-align: center;
+    font-size: 90%;
+    font-family: 'Lucida Console';
+
+}
+
+.icon {
+    font-size:25px;
+    
+}
+
+p {
+    font-family: 'Lucida Console';
+}
