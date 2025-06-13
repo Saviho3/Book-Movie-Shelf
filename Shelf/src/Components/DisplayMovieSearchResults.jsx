@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import addItem from '../util/addItem.js';
+import './DisplayMovieSearchResults.css';
 
 //api doesnt return director name when you look up a movie. i added a call  for it
 async function fetchDirector(movieId) {
@@ -90,8 +91,14 @@ const DisplayMovieSearchResults = ({ movies }) => {
 
             {popupMovieID === movie.id && (
               <div className="popup">
-                <textarea
-                  placeholder="Your thoughts?"
+                    <button
+                      onClick={() => setPopupMovieID(null)}
+                      className="cancel-button"
+                    >
+                      x
+                    </button>
+                <input
+                  placeholder="How did you feel about this movie?"
                   className="popup-review-text"
                   onChange={e => setNote(e.target.value)}
                 />
@@ -109,12 +116,6 @@ const DisplayMovieSearchResults = ({ movies }) => {
                   className="popup-add-button"
                 >
                   Submit
-                </button>
-                <button
-                  onClick={() => setPopupMovieID(null)}
-                  className="cancel-button"
-                >
-                  Cancel
                 </button>
               </div>
             )}
