@@ -58,6 +58,7 @@ async function doesUserExist(username, pass) {
     return false;
   }
 
+  console.log(data);
   return data !== null;
 
 
@@ -71,7 +72,7 @@ document.getElementById("submit-button").addEventListener("click", async functio
     let username = document.getElementById("username-input").value;
     let password = document.getElementById("password-input").value;
     const exists = await doesUserExist(username, password);
-    if (!exists) {
+    if (exists) {
       alert("Wrong username or password!");
     } else {
       localStorage.setItem("username", username);
