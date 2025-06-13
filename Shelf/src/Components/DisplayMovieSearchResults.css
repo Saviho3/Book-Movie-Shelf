@@ -75,6 +75,12 @@
     font-size: 18px;
     cursor: pointer;
   }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   body {
     background-color: #ffffff;

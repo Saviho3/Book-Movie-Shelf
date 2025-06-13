@@ -39,6 +39,8 @@ const DisplayMovieSearchResults = ({ movies }) => {
   const [popupMovieID, setPopupMovieID] = useState(null);
   const [rating, setRating] = useState(1);
   const [note, setNote] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 9;
 
   const handleAdd = async (movie) => {
     const directorName = await fetchDirector(movie.id);
@@ -66,11 +68,15 @@ const DisplayMovieSearchResults = ({ movies }) => {
 
   if (!movies || movies.length === 0) return <p>No movies found.</p>;
 
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+
   return (
     <>
       <p>Search Results</p>
       <div className="movie-grid">
-        {movies.map(movie => (
+        {currentMovies.map(movie => (
           <div key={movie.id} className="movie-card">
             <h2 className="title-text">{movie.title}</h2>
             {movie.poster_path ? (
@@ -122,6 +128,21 @@ const DisplayMovieSearchResults = ({ movies }) => {
           </div>
         ))}
       </div>
+    <div className="pagination-controls">
+      <button 
+        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} 
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      <span>Page {currentPage}</span>
+      <button 
+        onClick={() => setCurrentPage(prev => prev + 1)}
+        disabled={indexOfLastMovie >= movies.length}
+      >
+        Next
+      </button>
+    </div>
     </>
   );
 };
