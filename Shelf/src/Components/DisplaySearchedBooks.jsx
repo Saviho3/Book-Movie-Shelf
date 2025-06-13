@@ -59,7 +59,6 @@ function DisplaySearchedBooks({ books }) {
                         {
                             popupBookID == book.id && 
                         <div className="popup">
-                            <h2>Poop</h2>
                             <button className="close-button" onClick={() => setpopupBookID(false)}>x</button>
                             <input
                               type="text"

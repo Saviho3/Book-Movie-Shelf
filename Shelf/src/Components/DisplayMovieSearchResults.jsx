@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import addItem from '../util/addItem.js';
+import './DisplayMovieSearchResults.css';
 
 //api doesnt return director name when you look up a movie. i added a call  for it
 async function fetchDirector(movieId) {
@@ -38,6 +39,8 @@ const DisplayMovieSearchResults = ({ movies }) => {
   const [popupMovieID, setPopupMovieID] = useState(null);
   const [rating, setRating] = useState(1);
   const [note, setNote] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 9;
 
   const handleAdd = async (movie) => {
     const directorName = await fetchDirector(movie.id);
@@ -65,38 +68,48 @@ const DisplayMovieSearchResults = ({ movies }) => {
 
   if (!movies || movies.length === 0) return <p>No movies found.</p>;
 
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+
   return (
     <>
       <p>Search Results</p>
-      <div className="grid grid-cols-2 gap-4 p-4">
-        {movies.map(movie => (
-          <div key={movie.id} className="movie-card border p-4 rounded shadow">
-            <h2 className="font-bold mb-2">{movie.title}</h2>
+      <div className="movie-grid">
+        {currentMovies.map(movie => (
+          <div key={movie.id} className="movie-card">
+            <h2 className="title-text">{movie.title}</h2>
             {movie.poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={movie.title}
-                className="mb-2"
+                className="movie-image"
               />
             ) : <p>No poster available</p>}
-            <p className="text-sm text-gray-700">{movie.overview}</p>
+            <p className="overview-text">{movie.overview}</p>
 
             <button
               onClick={() => setPopupMovieID(movie.id)}
-              className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 mt-2"
+              className="add-button"
             >
               Add to Supabase
             </button>
 
             {popupMovieID === movie.id && (
-              <div className="mt-2 bg-gray-100 p-2 rounded">
-                <textarea
-                  placeholder="Your thoughts?"
-                  className="w-full border p-1 mt-1 text-sm"
+              <div className="popup">
+                    <button
+                      onClick={() => setPopupMovieID(null)}
+                      className="cancel-button"
+                    >
+                      x
+                    </button>
+                <input
+                  placeholder="How did you feel about this movie?"
+                  className="popup-review-text"
                   onChange={e => setNote(e.target.value)}
                 />
                 <select
-                  className="w-full mt-2 p-1 text-sm"
+                  className="popup-rating-select"
                   onChange={e => setRating(Number(e.target.value))}
                 >
                   {[...Array(10)].map((_, i) =>
@@ -106,21 +119,30 @@ const DisplayMovieSearchResults = ({ movies }) => {
 
                 <button
                   onClick={() => handleAdd(movie)}
-                  className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700 mt-2"
+                  className="popup-add-button"
                 >
                   Submit
-                </button>
-                <button
-                  onClick={() => setPopupMovieID(null)}
-                  className="text-red-500 text-xs ml-2"
-                >
-                  Cancel
                 </button>
               </div>
             )}
           </div>
         ))}
       </div>
+    <div className="pagination-controls">
+      <button 
+        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} 
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      <span>Page {currentPage}</span>
+      <button 
+        onClick={() => setCurrentPage(prev => prev + 1)}
+        disabled={indexOfLastMovie >= movies.length}
+      >
+        Next
+      </button>
+    </div>
     </>
   );
 };
