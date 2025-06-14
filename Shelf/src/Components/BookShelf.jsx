@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import supabase from "../config/supabaseClient.js";
+import "../styles/BookShelf.css";
 
 function BookShelf() {
     const [books, setBooks] = useState([]);
@@ -21,10 +22,11 @@ function BookShelf() {
     getBooksForUser();
     }, []);
     return (
-        <>
+        <div class="shelf-grid">
             {books.map(book => (
-                <div key={book.id || book.created_at} style={{ margin: '10px' }}>
+                <div class="book-card" key={book.id || book.created_at} style={{ margin: '10px' }}>
                     <img
+                    class = "book-image"
                     src={book.img}
                     alt={book.title}
                     style={{ width: '120px', height: 'auto', borderRadius: '4px' }}
@@ -32,7 +34,7 @@ function BookShelf() {
                     <p>{book.title}</p>
                 </div>
                 ))}
-        </>
+        </div>
     );
 }
 
