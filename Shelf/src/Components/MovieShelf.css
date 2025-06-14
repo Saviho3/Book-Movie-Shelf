@@ -14,12 +14,22 @@
     padding: 12px;
     background-color: #f9f9f9;
   }
-  
-  .movie-image {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
+.movie-image {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #ffffff;
+}

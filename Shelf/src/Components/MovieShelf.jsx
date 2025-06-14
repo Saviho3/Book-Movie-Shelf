@@ -4,6 +4,8 @@ import "./MovieShelf.css";
 
 const MovieShelf = () => {
     const [userMovies, setUserMovies] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const moviesPerPage = 9;
     const getUserMovies = async () => {
         const {data, error} = await supabase
         .from("movies")
@@ -21,9 +23,14 @@ const MovieShelf = () => {
         getUserMovies();
     },[])
 
+    const indexOfLastMovie = currentPage * moviesPerPage;
+    const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+    const currentMovies = userMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+
     return (
+    <>
     <div className='movie-grid'>
-    {userMovies.map(movie => (
+    {currentMovies.map(movie => (
         <div key={movie.id} className="movie-card">
         <h2 className="title-text">{movie.title}</h2>
             {movie.img !== '' ? (
@@ -41,6 +48,22 @@ const MovieShelf = () => {
         </div>
     ))}
     </div>
+    <div className="pagination-controls">
+      <button 
+        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} 
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+      <span>Page {currentPage}</span>
+      <button 
+        onClick={() => setCurrentPage(prev => prev + 1)}
+        disabled={indexOfLastMovie >= userMovies.length}
+      >
+        Next
+      </button>
+    </div>
+    </>
     );
 }
 
