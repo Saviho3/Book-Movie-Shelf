@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import addItem from '../util/addItem.js';
-import './DisplayMovieSearchResults.css';
+import '../styles/DisplayMovieSearchResults.css';
 
 //api doesnt return director name when you look up a movie. i added a call  for it
 async function fetchDirector(movieId) {

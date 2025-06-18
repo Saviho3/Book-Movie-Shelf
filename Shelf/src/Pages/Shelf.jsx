@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import BookShelf from '../Components/BookShelf.jsx'
 import MovieShelf from '../Components/MovieShelf.jsx'
 
+
 function Shelf() {
   const [viewState, setViewState] = useState(0); //0 for books, 1 for movies
   const onSwitchClick = () => {

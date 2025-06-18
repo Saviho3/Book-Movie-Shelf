@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import addItem from '../util/addItem.js'
-import './DisplaySearchedBooks.css';
+import '../styles/DisplaySearchedBooks.css';
 
 function DisplaySearchedBooks({ books }) {
 
