@@ -24,7 +24,7 @@ function Shelf() {
         <MovieShelf />
         </>
       }
-      
+      <Link to="/graphs"><button>to graphs</button></Link>
     </>
   )
 }
