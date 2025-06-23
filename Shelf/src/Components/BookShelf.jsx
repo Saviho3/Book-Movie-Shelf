@@ -58,7 +58,8 @@ function BookShelf() {
         const { data, error } = await supabase
             .from('books')
             .delete()
-            .eq('id', selectedBook.id);
+            .eq('title', selectedBook.title)
+            .eq('username', localStorage.getItem("username"));
         console.log('Supabase delete response:', { data, error });
         if (error) {
             console.error("Error deleting book:", error, { data, error });
