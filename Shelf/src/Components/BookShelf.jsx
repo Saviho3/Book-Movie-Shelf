@@ -120,7 +120,10 @@ function BookShelf() {
                         {!editMode ? (
                             <>
                                 <h3>Options for "{selectedBook?.title}"</h3>
-                                <button onClick={() => setEditMode(true)}>Edit</button>
+                                <button onClick={() => {
+                                    setEditMode(true);
+                                    setEditData({ rating: selectedBook.rating, note: selectedBook.note });
+                                }}>Edit</button>
                                 <button onClick={handleDelete}>Delete</button>
                                 <button onClick={() => {
                                     setShowPopup(false);
@@ -129,28 +132,34 @@ function BookShelf() {
                             </>
                         ) : (
                             <>
-                                <h3>Edit "{selectedBook?.title}"</h3>
-                                <div className="edit-form">
-                                    <label>
-                                        Rating (0-10):
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            max="10"
-                                            value={editData.rating}
-                                            onChange={(e) => setEditData(prev => ({ ...prev, rating: e.target.value }))}
-                                        />
-                                    </label>
-                                    <label>
-                                        Note:
-                                        <textarea
-                                            value={editData.note}
-                                            onChange={(e) => setEditData(prev => ({ ...prev, note: e.target.value }))}
-                                        />
-                                    </label>
-                                    <button onClick={handleEdit}>Save</button>
-                                    <button onClick={() => setEditMode(false)}>Back</button>
-                                </div>
+                              <h3>Edit "{selectedBook?.title}"</h3>
+                              <div className="edit-form">
+                                <label>
+                                  Rating (0–10):
+                                  <input
+                                    type="number"
+                                    min="0"
+                                    max="10"
+                                    value={editData.rating}
+                                    onChange={(e) =>
+                                      setEditData((prev) => ({ ...prev, rating: e.target.value }))
+                                    }
+                                  />
+                                </label>
+
+                                <label>
+                                  Note:
+                                  <textarea
+                                    value={editData.note}
+                                    onChange={(e) =>
+                                      setEditData((prev) => ({ ...prev, note: e.target.value }))
+                                    }
+                                  />
+                                </label>
+
+                                <button onClick={handleEdit}>Save</button>
+                                <button onClick={() => setEditMode(false)}>Back</button>
+                              </div>
                             </>
                         )}
                     </div>
