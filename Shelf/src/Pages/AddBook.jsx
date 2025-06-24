@@ -1,3 +1,4 @@
+import supabase from '../config/supabaseClient.js';
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import BookSearchBar from '../Components/BookSearchBar.jsx'
@@ -13,6 +14,28 @@ function AddBook() {
     const result = await response.json();
     setBooks(result.items || []);
   }
+
+  async function addBookToShelf(book) {
+    const book_id = crypto.randomUUID();
+    const username = localStorage.getItem("username");
+
+    const { error } = await supabase.from("books").insert({
+      book_id,
+      title: book.volumeInfo?.title || "Untitled",
+      img: book.volumeInfo?.imageLinks?.thumbnail || "",
+      description: book.volumeInfo?.description || "",
+      rating: null,
+      note: "",
+      username
+    });
+
+    if (error) {
+      alert("Failed to add book.");
+      console.error(error);
+    } else {
+      alert("Book added to shelf!");
+    }
+  }
   return (
     <>
       <h1>Welcome to Add</h1>
@@ -21,7 +44,7 @@ function AddBook() {
       onSearchChange = {setSearchTerm}
       onSearchSubmit={getBooks}/>
       <Link to="/"><button>Cancel</button></Link>
-      <DisplaySearchedBooks books={books}/>
+      <DisplaySearchedBooks books={books} onAddBook={addBookToShelf}/>
     </>
   )
 }
