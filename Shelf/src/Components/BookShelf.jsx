@@ -37,13 +37,14 @@ function BookShelf() {
                 rating: editData.rating,
                 note: editData.note
             })
-            .eq('id', selectedBook.id);
+            .eq('book_id', selectedBook.book_id)
+            .eq('username', localStorage.getItem("username"));
         console.log('Supabase edit response:', { data, error });
         if (error) {
             console.error("Error updating book:", error, { data, error });
             alert("Failed to update the book.");
         } else {
-            console.log(`Book (ID: ${selectedBook.id}) successfully edited.`);
+            console.log(`Book (ID: ${selectedBook.book_id}) successfully edited.`);
             alert("Book successfully updated.");
             fetchBooks();
             setEditMode(false);
@@ -54,18 +55,26 @@ function BookShelf() {
 
     const handleDelete = async () => {
         if (!selectedBook) return;
+        const username = localStorage.getItem("username");
         console.log('Delete handler triggered for book:', selectedBook);
+        console.log('Attempting to delete book with:', {
+            book_id: selectedBook.book_id,
+            username
+        });
+
         const { data, error } = await supabase
             .from('books')
             .delete()
-            .eq('title', selectedBook.title)
-            .eq('username', localStorage.getItem("username"));
+            .eq('book_id', selectedBook.book_id)
+            .eq('username', username)
+            .select();
+
         console.log('Supabase delete response:', { data, error });
-        if (error) {
-            console.error("Error deleting book:", error, { data, error });
+        if (error || !data || data.length === 0) {
+            console.error("Error or no matching row deleted:", error, data);
             alert("Failed to delete the book.");
         } else {
-            console.log(`Book (ID: ${selectedBook.id}) successfully deleted.`);
+            console.log(`Book (ID: ${selectedBook.book_id}) successfully deleted.`);
             alert("Book successfully deleted.");
             fetchBooks();
             setShowPopup(false);
@@ -81,7 +90,7 @@ function BookShelf() {
         <>
             <div className="shelf-grid">
                 {currentBooks.map(book => (
-                    <div className="book-card" key={book.id || book.created_at}>
+                    <div className="book-card" key={book.book_id || book.created_at}>
                         <div className="book-menu-icon" onClick={() => {
                             setSelectedBook(book);
                             setShowPopup(true);
