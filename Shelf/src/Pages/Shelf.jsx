@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import BookShelf from '../Components/BookShelf.jsx'
 import MovieShelf from '../Components/MovieShelf.jsx'
+import NavHotBar from '../Components/NavHotBar.jsx'
 
 
 function Shelf() {
-  const [viewState, setViewState] = useState(0); //0 for books, 1 for movies
+  const [searchParams] = useSearchParams();
+  const [viewState, setViewState] = useState(0);
+  
+  useEffect(() => {
+    const param = searchParams.get("view");
+    setViewState(param === "movies" ? 1 : 0);
+  },[searchParams]);
+
   const onSwitchClick = () => {
     setViewState(1 - viewState);
   }
+
   return (
     <>
+      <NavHotBar />
       <h1>Welcome to Shelf, {localStorage.getItem("username")}</h1>
       <button onClick={onSwitchClick}>{"\u21C4"}</button>
       {viewState === 0 ?

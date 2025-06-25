@@ -3,6 +3,7 @@ import supabase from "../config/supabaseClient.js";
 import {
   BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import NavHotBar from '../Components/NavHotBar.jsx';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A28EFF', '#FF6384'];
 
@@ -37,6 +38,7 @@ function Graphs() {
 
     return(
         <div>
+            <NavHotBar />
             <h1>monkey</h1>
             <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={genreCounts} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

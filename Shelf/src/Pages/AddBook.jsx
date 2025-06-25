@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import BookSearchBar from '../Components/BookSearchBar.jsx'
 import DisplaySearchedBooks from '../Components/DisplaySearchedBooks.jsx';
+import NavHotBar from '../Components/NavHotBar.jsx';
 
 function AddBook() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,6 +39,7 @@ function AddBook() {
   }
   return (
     <>
+      <NavHotBar />
       <h1>Welcome to Add</h1>
       <BookSearchBar 
       searchTerm = {searchTerm}
