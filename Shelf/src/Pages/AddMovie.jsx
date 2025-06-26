@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MovieSearchBar from '../Components/MovieSearchBar';
 import DisplayMovieSearchResults from '../Components/DisplayMovieSearchResults';
 import { Link } from 'react-router-dom';
+import NavHotBar from '../Components/NavHotBar';
 
 const AddMovie = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -22,10 +23,13 @@ const AddMovie = () => {
     }
 
 
-    return (<><h1>Movie Search:</h1>
-    <MovieSearchBar movieSearchHandler={handleMovieSearch} searchTerm={searchTerm} onTextEdit={setSearchTerm}></MovieSearchBar>
-    <Link to="/"><button>Cancel</button></Link>
-    <DisplayMovieSearchResults movies={movieResults}></DisplayMovieSearchResults>
+    return (
+    <>
+        <NavHotBar />
+        <h1>Movie Search:</h1>
+        <MovieSearchBar movieSearchHandler={handleMovieSearch} searchTerm={searchTerm} onTextEdit={setSearchTerm}></MovieSearchBar>
+        <Link to="/"><button>Cancel</button></Link>
+        <DisplayMovieSearchResults movies={movieResults}></DisplayMovieSearchResults>
     </>
     );
 }
