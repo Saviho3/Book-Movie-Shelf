@@ -4,12 +4,17 @@ import {
   BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import NavHotBar from '../Components/NavHotBar.jsx';
+import CustomBarChart from '../Components/CustomBarChart.jsx';
+import CustomPieChart from '../Components/CustomPieChart.jsx';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A28EFF', '#FF6384'];
 
 
 function Graphs() {
+    const [viewState, setViewState] = useState(0);
+
     const [genreCounts, setGenreCounts] = useState([]);
+    const [movieGenreCounts, setMovieGenreCounts] = useState([]);
 
     useEffect(() => {
         async function getGenreCounts() {
@@ -34,43 +39,49 @@ function Graphs() {
 
     }, []);
 
-    console.log(genreCounts);
+    useEffect(() => {
+        async function getMovieGenreCounts() {
+            const {data, error} = await supabase.rpc("count_movies_by_genre", {username: localStorage.getItem('username')});
+
+            if (error) {
+                console.error("Error fetching movie genre: ", error);
+            } else {
+                const cleanedData = data
+                .filter(item => item.genre && item.genre !== "{}")
+                .map(item => ({
+                    ...item,
+                    genre: item.genre.replace(/[{""}]/g, '')
+                }));
+                setMovieGenreCounts(cleanedData);
+            }
+
+        }
+        getMovieGenreCounts();
+    }, []);
+
+    const onSwitchClick = () => {
+    setViewState(1 - viewState);
+  }
+
+    //console.log(movieGenreCounts);
 
     return(
         <div>
             <NavHotBar />
-            <h1>monkey</h1>
-            <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={genreCounts} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="genre" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="count" fill="#8884d8" />
-                </BarChart>
-            </ResponsiveContainer>
-            <ResponsiveContainer width="100%" height={300}>
-                <PieChart width={400} height={300}>
-                    <Pie
-                        data={genreCounts}
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={100}
-                        fill="#8884d8"
-                        dataKey="count"
-                        nameKey = "genre"
-                        label
+            <button onClick={onSwitchClick}>{"\u21C4"}</button>
+            <h1>Books</h1>
+            {viewState === 0 ?
+            <CustomBarChart genreCounts = {genreCounts}/>
+            :
+            <CustomPieChart genreCounts={genreCounts}/>
+}
 
-                    >
-                        {genreCounts.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/> 
-                        ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                </PieChart>
-            </ResponsiveContainer>
+            <h1>Movies</h1>
+            {viewState === 0 ?
+            <CustomBarChart genreCounts = {movieGenreCounts}/>
+            :
+            <CustomPieChart genreCounts={movieGenreCounts}/>
+}
         </div>
     )
 }

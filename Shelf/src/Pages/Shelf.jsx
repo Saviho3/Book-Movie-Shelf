@@ -22,7 +22,7 @@ function Shelf() {
     <>
       <NavHotBar />
       <h1>Welcome to Shelf, {localStorage.getItem("username")}</h1>
-      <button onClick={onSwitchClick}>{"\u21C4"}</button>
+      
       {viewState === 0 ?
         <>
         <Link to="/add-book"><button>Add Book</button></Link>
@@ -34,7 +34,7 @@ function Shelf() {
         <MovieShelf />
         </>
       }
-      <Link to="/graphs"><button>to graphs</button></Link>
+      
     </>
   )
 }

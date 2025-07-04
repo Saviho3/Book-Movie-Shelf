@@ -68,12 +68,16 @@ function DisplaySearchedBooks({ books }) {
                               onChange={(e) => setNote(e.target.value)}
                               className="popup-input"
                             />
+                            
                             <select
                               name="ratingOptions"
                               id="ratingOptions"
                               onChange={(e) => setRating(Number(e.target.value))}
                               className="popup-select"
                             >
+                                <option value="" disabled>
+                                    Out of 10
+                                </option>
                               {[...Array(10)].map((_, index) => (
                                 <option key={index} value={index + 1}>
                                   {index + 1}

@@ -134,18 +134,20 @@ function BookShelf() {
                             <>
                               <h3>Edit "{selectedBook?.title}"</h3>
                               <div className="edit-form">
-                                <label>
-                                  Rating (0–10):
-                                  <input
-                                    type="number"
-                                    min="0"
-                                    max="10"
-                                    value={editData.rating}
-                                    onChange={(e) =>
-                                      setEditData((prev) => ({ ...prev, rating: e.target.value }))
-                                    }
-                                  />
-                                </label>
+                                <select name="rating options" 
+                                    id="ratingOptions"
+                                    value= {editData.rating}
+                                    onChange={(e)=> setEditData((prev) => ({ ...prev, rating: Number(e.target.value) }))}
+                                    className="popup-select">
+                                        <option value="" disabled>
+                                        Out of 10
+                                        </option>
+                                        {[...Array(10)].map((_, index) => (
+                                        <option key={index} value={index + 1}>
+                                            {index + 1}
+                                        </option>
+                                        ))}
+                                    </select>
 
                                 <label>
                                   Note:

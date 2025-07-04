@@ -15,6 +15,7 @@ const NavHotBar = () => {
         <Link to="/?view=movies" className="hotbar-link">Movie Shelf</Link>
         <Link to="/add-book" className="hotbar-link">Add Book</Link>
         <Link to="/add-movie" className="hotbar-link">Add Movie</Link>
+        <Link to="/graphs" className="hotbar-link">Graphs</Link>
         <button onClick={handleLogout} className="hotbar-button">Logout</button>
     </div>
     );
