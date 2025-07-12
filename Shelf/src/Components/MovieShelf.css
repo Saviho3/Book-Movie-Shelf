@@ -122,3 +122,39 @@
 body {
   background-color: #ffffff;
 }
+.pagination-controls {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+
+.pagination-controls button {
+  background-color: var(--medium);
+  color: #F0EBD8;
+  border: 1px solid var(--dark);
+  padding: 10px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 80px;
+  height: 40px;
+  margin-top: -5px;
+  transition: all 0.3s ease;
+}
+
+.pagination-controls button:hover{
+    background-color: var(--light);
+    color: var(--cream);
+    transform: translateY(-5px);
+
+}
+
+.pagination-s {
+  color: #F0EBD8;
+  font-size: 18px;
+  margin: 0 10px;
+}

@@ -170,7 +170,7 @@ const MovieShelf = () => {
         >
           Previous
         </button>
-        <span>Page {currentPage}</span>
+        <span className='pagination-s'> {currentPage}</span>
         <button
           onClick={() => setCurrentPage(prev => prev + 1)}
           disabled={indexOfLastMovie >= userMovies.length}

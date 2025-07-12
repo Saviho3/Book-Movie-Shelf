@@ -11,12 +11,19 @@ const NavHotBar = () => {
 
     return (
     <div className="hotbar">
-        <Link to="/" className="hotbar-link">Book Shelf</Link>
-        <Link to="/?view=movies" className="hotbar-link">Movie Shelf</Link>
+    <div className="hotbar-left">
+    </div>
+    <div className="hotbar-center">
+        <Link to="/" className="hotbar-link">Home</Link>
+        <Link to="/shelf" className="hotbar-link">Book Shelf</Link>
+        <Link to="/shelf?view=movies" className="hotbar-link">Movie Shelf</Link>
         <Link to="/add-book" className="hotbar-link">Add Book</Link>
         <Link to="/add-movie" className="hotbar-link">Add Movie</Link>
         <Link to="/graphs" className="hotbar-link">Graphs</Link>
+    </div>
+    <div className="hotbar-right">
         <button onClick={handleLogout} className="hotbar-button">Logout</button>
+    </div>
     </div>
     );
 };

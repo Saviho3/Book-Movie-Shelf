@@ -69,14 +69,14 @@ function Graphs() {
         <div>
             <NavHotBar />
             <button onClick={onSwitchClick}>{"\u21C4"}</button>
-            <h1>Books</h1>
+            <h1 style={{ textAlign: "center", color: "#F0EBD8"}}>Books</h1>
             {viewState === 0 ?
             <CustomBarChart genreCounts = {genreCounts}/>
             :
             <CustomPieChart genreCounts={genreCounts}/>
 }
 
-            <h1>Movies</h1>
+            <h1 style={{ textAlign: "center", color: "#F0EBD8"}}>Movies</h1>
             {viewState === 0 ?
             <CustomBarChart genreCounts = {movieGenreCounts}/>
             :

@@ -1,38 +1,57 @@
 .hotbar {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 12px;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: var(--darkest);
+    border-radius: 0px;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+.hotbar-left {
+    flex-shrink: 0;
+}
+
+.hotbar-center {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.hotbar-right {
+    flex-shrink: 0;
+}
+
 .hotbar-link {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     padding: 6px 12px;
     border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .hotbar-link:hover {
-    background-color: #ddd;
+    background-color: #748CAB;
+    color: var(--darkest);
 }
 
 .hotbar-button {
     background: none;
     border: none;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease;
 }
   
 .hotbar-button:hover {
-    background-color: #ddd;
+    background-color: #748CAB;
+    color: var(--darkest);
 }

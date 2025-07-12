@@ -1,0 +1,18 @@
+/* styles/background.css */
+
+:root {
+  --darkest: #0D1321;
+  --dark: #1D2D44;
+  --medium: #3E5C76;
+  --light: #748CAB;
+  --cream: #F0EBD8;
+  --accent-warm: #FFAA4C;
+  --accent-cool: #A3D9FF;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--darkest);
+    margin: 0;
+    font-family: sans-serif;
+}

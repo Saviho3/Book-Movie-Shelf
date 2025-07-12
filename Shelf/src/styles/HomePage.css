@@ -1,0 +1,120 @@
+body {
+  background-color: #1D2D44;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.homepage h1 {
+  color: #F0EBD8;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.grid-item {
+  background-color: #3E5C76;
+  color: #F0EBD8;
+  padding: 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-height: 120px;
+}
+
+.grid-item:hover {
+  background-color: #748CAB;
+  color: #0D1321;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.grid-item span {
+  display: block;
+}
+
+.graphs-item {
+  grid-column: span 2;
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #3E5C76;
+  color: #F0EBD8;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #748CAB;
+  color: #0D1321;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .graphs-item {
+    grid-column: span 2;
+  }
+  
+  .homepage h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .grid-item {
+    padding: 1.5rem;
+    font-size: 1rem;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .graphs-item {
+    grid-column: span 1;
+  }
+} 
