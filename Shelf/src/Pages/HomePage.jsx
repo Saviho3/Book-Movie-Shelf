@@ -18,7 +18,7 @@ const HomePage = () => {
         <Link to="/shelf" className="grid-item">
           <span>Book Shelf</span>
         </Link>
-        <Link to="//shelf?view=movies" className="grid-item">
+        <Link to="/shelf?view=movies" className="grid-item">
           <span>Movie Shelf</span>
         </Link>
         <Link to="/add-book" className="grid-item">
