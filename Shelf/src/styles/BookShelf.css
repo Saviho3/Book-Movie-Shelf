@@ -16,14 +16,18 @@
 
 
 .book-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  background-color: #f9f9f9;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    mix-blend-mode: lighten;
 }
 
 .book-menu-icon {
@@ -35,12 +39,13 @@
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: linear-gradient(270deg, var(--darkest), var(--medium));
     transition: background-color 0.2s;
 }
 
 .book-menu-icon:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--medium);
+    color: var(--darkest);
 }
 
 .popup-overlay {
@@ -112,4 +117,45 @@
 .edit-form textarea {
     min-height: 100px;
     resize: vertical;
+}
+
+.pagination-controls {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+
+.pagination-controls button {
+  background-color: var(--medium);
+  color: #F0EBD8;
+  border: 1px solid var(--dark);
+  padding: 10px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 80px;
+  height: 40px;
+  margin-top: -5px;
+  transition: all 0.3s ease;
+}
+
+.pagination-controls button:hover{
+    background-color: var(--light);
+    color: var(--cream);
+    transform: translateY(-5px);
+
+}
+
+.pagination-s {
+  color: #F0EBD8;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.book-card p {
+  text-align: justify;
 }

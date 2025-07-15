@@ -21,11 +21,10 @@ function Shelf() {
   return (
     <>
       <NavHotBar />
-      <h1>Welcome to Shelf, {localStorage.getItem("username")}</h1>
+      <h1 style={{ textAlign: "center", color: "#F0EBD8"}}>Welcome to Shelf, {localStorage.getItem("username")}</h1>
       
       {viewState === 0 ?
         <>
-        <Link to="/add-book"><button>Add Book</button></Link>
         <BookShelf />
         </>
         :

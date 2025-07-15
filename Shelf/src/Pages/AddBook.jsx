@@ -40,12 +40,11 @@ function AddBook() {
   return (
     <>
       <NavHotBar />
-      <h1>Welcome to Add</h1>
+      <h1 style={{ textAlign: "center", color: "#F0EBD8"}}>Welcome to Add</h1>
       <BookSearchBar 
       searchTerm = {searchTerm}
       onSearchChange = {setSearchTerm}
       onSearchSubmit={getBooks}/>
-      <Link to="/"><button>Cancel</button></Link>
       <DisplaySearchedBooks books={books} onAddBook={addBookToShelf}/>
     </>
   )

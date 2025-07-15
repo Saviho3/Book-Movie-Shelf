@@ -26,9 +26,8 @@ const AddMovie = () => {
     return (
     <>
         <NavHotBar />
-        <h1>Movie Search:</h1>
+        <h1 style={{ textAlign: "center", color: "#F0EBD8"}}>Movie Search:</h1>
         <MovieSearchBar movieSearchHandler={handleMovieSearch} searchTerm={searchTerm} onTextEdit={setSearchTerm}></MovieSearchBar>
-        <Link to="/"><button>Cancel</button></Link>
         <DisplayMovieSearchResults movies={movieResults}></DisplayMovieSearchResults>
     </>
     );
