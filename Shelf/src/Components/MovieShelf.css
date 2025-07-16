@@ -21,19 +21,22 @@ body {
 }
 
 .movie-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(240, 235, 216, 0.15);
+  color: white !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(240, 235, 216, 0.15);
   border-radius: 12px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   position: relative;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  
-    
+  mix-blend-mode: normal;
+  text-align: justify;
 }
+
 
 .movie-options {
   position: absolute;
@@ -44,16 +47,14 @@ body {
   font-weight: bold;
   padding: 5px 10px;
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: linear-gradient(270deg, var(--darkest), var(--medium));
   transition: background-color 0.2s;
-  
 }
 
 .movie-options:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--medium);
+  color: var(--darkest);
 }
-
-
 
 .popup-overlay {
   position: fixed;
@@ -169,3 +170,4 @@ body {
   font-size: 18px;
   margin: 0 10px;
 }
+

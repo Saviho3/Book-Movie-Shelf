@@ -99,7 +99,7 @@ function BookShelf() {
                         }}>
                             ⋮
                         </div>
-                        <h1>{book.title}</h1>
+                        <h2>{book.title}</h2>
                         <img
                             className="book-image"
                             src={book.img}
