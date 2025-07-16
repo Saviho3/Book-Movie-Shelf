@@ -86,7 +86,6 @@ const DisplayMovieSearchResults = ({ movies }) => {
                 className="movie-image"
               />
             ) : <p>No poster available</p>}
-            <p className="overview-text">{movie.overview}</p>
 
             <button
               onClick={() => setPopupMovieID(movie.id)}

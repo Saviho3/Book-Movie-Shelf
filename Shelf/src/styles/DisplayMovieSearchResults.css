@@ -6,13 +6,20 @@
   }
   
   .movie-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 235, 216, 0.15);
+    color: white !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 12px;
-    background-color: #f9f9f9;
+    border: 1px solid rgba(240, 235, 216, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    mix-blend-mode: normal;
+    text-align: justify;
   }
   
   .movie-image {

@@ -18,6 +18,7 @@ h1 {
     background-color: #748CAB;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 25px;
 }
 
 
@@ -57,6 +58,15 @@ h1 {
     font-family: 'Lucida Console';
     margin-top: 25px;
 
+}
+
+#cancel {
+    width:95%;
+    height: 30px;
+    text-align: center;
+    font-size: 90%;
+    font-family: 'Lucida Console';
+    margin-top: 25px;
 }
 
 .icon {
