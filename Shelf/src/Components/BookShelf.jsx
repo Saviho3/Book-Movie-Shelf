@@ -90,7 +90,8 @@ function BookShelf() {
         <>
             <div className="shelf-grid">
                 {currentBooks.map(book => (
-                    <div className="book-card" key={book.book_id || book.created_at}>
+                    <div className="book-card" key={book.book_id || book.created_at
+                    } >
                         <div className="book-menu-icon" onClick={() => {
                             setSelectedBook(book);
                             setShowPopup(true);

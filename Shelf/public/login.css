@@ -1,35 +1,42 @@
+body {
+    background-color: #1D2D44;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;           
+                 
+}
 
 h1 {
     text-align: center;
     font-family: 'Lucida Console';
 }
+
 .login-box {
     width: 50vh;
-    height:40vh;
-    margin: 0 auto;
-    
+    border: solid #3E5C76;
+    background-color: #748CAB;
+    padding: 20px;
+    box-sizing: border-box;
 }
+
 
 .input-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
-    
-    
+    gap: 2px; 
+    padding-top: 5px;
 }
 
 .info-inputs {
     width:80%;
     height:30px;
     padding-left: 10px;
+    
     font-family: 'Lucida Console';
     
 
-}
-
-#username-input {
-    
 }
 
 
@@ -49,6 +56,7 @@ h1 {
     text-align: center;
     font-size: 90%;
     font-family: 'Lucida Console';
+    margin-top: 25px;
 
 }
 

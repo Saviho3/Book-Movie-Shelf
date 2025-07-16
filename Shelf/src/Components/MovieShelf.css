@@ -1,3 +1,7 @@
+body {
+  background-color: #0D1B2A;
+}
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -5,15 +9,30 @@
   padding: 20px;
 }
 
+
+.movie-image {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
 .movie-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  background-color: #f9f9f9;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  
+    
 }
 
 .movie-options {
@@ -27,20 +46,14 @@
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.8);
   transition: background-color 0.2s;
+  
 }
 
 .movie-options:hover {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.movie-image {
-  width: 150px;
-  height: auto;
-  margin-bottom: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .popup-overlay {
   position: fixed;
@@ -119,9 +132,7 @@
   align-items: center;
 }
 
-body {
-  background-color: #ffffff;
-}
+
 .pagination-controls {
     background-color: var(--dark);
     display: flex;

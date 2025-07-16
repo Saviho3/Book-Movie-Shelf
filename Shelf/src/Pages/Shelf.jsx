@@ -29,7 +29,6 @@ function Shelf() {
         </>
         :
         <>
-        <Link to="/add-movie"><button>Add Movie</button></Link>
         <MovieShelf />
         </>
       }

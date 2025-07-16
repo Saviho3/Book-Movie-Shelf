@@ -81,7 +81,9 @@ const MovieShelf = () => {
     <>
       <div className='movie-grid'>
         {currentMovies.map(movie => (
-          <div key={movie.id} className="movie-card">
+          <div key={movie.id} className="movie-card"
+          
+          >
             <div
               className="movie-options"
               onClick={() => {
@@ -98,6 +100,7 @@ const MovieShelf = () => {
                 src={movie.img}
                 alt={movie.title}
                 className="movie-image"
+                style={{ width: '120px', height: 'auto', borderRadius: '4px' }}
               />
             ) : <p>No poster available</p>}
             <p className="overview-text">{movie.description}</p>
