@@ -4,7 +4,8 @@ import '../styles/DisplayMovieSearchResults.css';
 
 //api doesnt return director name when you look up a movie. i added a call  for it
 async function fetchDirector(movieId) {
-  const apiKey = "0497367e7c46bb332aa647de78248c18";
+  // IMPORTANT: Set VITE_TMDB_API_KEY in your .env file (do NOT commit .env)
+  const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`
   );

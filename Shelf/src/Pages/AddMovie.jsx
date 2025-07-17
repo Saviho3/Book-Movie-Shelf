@@ -12,7 +12,8 @@ const AddMovie = () => {
         e.preventDefault();
         console.log("Searching for", searchTerm);
 
-        const apiKey = "0497367e7c46bb332aa647de78248c18";
+        // IMPORTANT: Set VITE_TMDB_API_KEY in your .env file (do NOT commit .env)
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(searchTerm)}`;
         const response = await fetch(url);
         const data = await response.json();
